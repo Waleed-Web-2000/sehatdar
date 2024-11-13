@@ -257,7 +257,7 @@
 							</div>
 							<div class="col-xl-5">
 								<div class="cart-detail">
-									<button onclick="openModal()" class="btn btn-outline-secondary w-100 m-b20">Buy Now</button>
+									<button onclick="openModal()" class="btn btn-secondary w-100 m-b20">Buy Now</button>
 									<div class="icon-bx-wraper style-4 m-b15">
 										<div class="icon-bx">
 											<i class="flaticon flaticon-ship"></i>
@@ -280,7 +280,7 @@
 										</tbody>
 									</table>
 									
-									<a href="javacript:void(0);" class="btn btn-secondary w-100">Cash On Delivery</a>
+									<a href="javacript:void(0);" class="btn btn-outline-secondary w-100">Cash On Delivery</a>
 								</div>	
 							</div>
 						</div>
@@ -505,43 +505,7 @@ Order Sehatdar’s Pure Shilajit today and discover the transformative benefits 
 			</div>
 		</section>
 
-		<!-- Modal Structure -->
-<div id="myModal" class="modal align-items-center">
-        
-        <!-- Form Content -->
-        <div class="contact-area1">
-        	<span onclick="closeModal()"><i class="fas fa-close"></i></span>
-            <form class="dz-form dzForm" method="POST" action="script/contact_smtp.php">
-                <input type="hidden" class="form-control" name="dzToDo" value="Contact">
-                <input type="hidden" class="form-control" name="reCaptchaEnable" value="0">
-                <div class="dzFormMsg"></div>
-                <label class="form-label">Your Name</label>
-                <div class="input-group">
-                    <input required type="text" class="form-control" name="dzName">
-                </div>
-                <label class="form-label">Email Address</label>
-                <div class="input-group">
-                    <input required type="email" class="form-control" name="dzEmail">
-                </div>
-                <label class="form-label">Phone Number</label>
-                <div class="input-group">
-                    <input required type="tel" class="form-control" name="dzPhoneNumber">
-                </div>
-                <label class="form-label">Message</label>
-                <div class="input-group m-b30">
-                    <textarea name="dzMessage" rows="4" required class="form-control m-b10"></textarea>
-                </div>
-                <div class="input-recaptcha m-b30">
-                    <div class="g-recaptcha" data-sitekey="<!-- Put Your Recaptcha Secret Key -->" data-callback="verifyRecaptchaCallback" data-expired-callback="expiredRecaptchaCallback"></div>
-                    <input class="form-control d-none" style="display:none;" data-recaptcha="true" required data-error="Please complete the Captcha">
-                </div>
-                <div>
-                    <button name="submit" type="submit" value="submit" class="btn w-100 btn-white btnhover">SUBMIT</button>
-                </div>
-            </form>
-        </div>
-</div>
-	<!-- End Modal Structure -->
+
 	
 	</div>
 	
@@ -623,25 +587,7 @@ Order Sehatdar’s Pure Shilajit today and discover the transformative benefits 
 <script src="js/dz.ajax.js"></script><!-- AJAX -->
 <script src="js/custom.js"></script><!-- CUSTOM JS -->
 
-	<script>
-    // Function to open the modal
-    function openModal() {
-        document.getElementById("myModal").style.display = "block";
-    }
-
-    // Function to close the modal
-    function closeModal() {
-        document.getElementById("myModal").style.display = "none";
-        location.reload();
-    }
-
-    // Close modal when clicking outside of the modal content
-    window.onclick = function(event) {
-        if (event.target == document.getElementById("myModal")) {
-            closeModal();
-        }
-    }
-</script>
+	
 
 
 </body>
