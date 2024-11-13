@@ -232,17 +232,6 @@
 											</div>
 										</div>
 										<div class="meta-content m-b20 d-flex align-items-end">
-											<div class="btn-quantity quantity-sm light d-xl-none d-blcok d-sm-block">
-												<label class="form-label">Quantity</label>
-												<input  type="text" value="1" name="demo_vertical2">
-											</div>
-										</div>
-										<div class="product-num">
-											<div class="btn-quantity light d-xl-block d-sm-none d-none">
-												<label class="form-label">Quantity</label>
-												<input  type="text" value="1" name="demo_vertical2">
-											</div>
-											
 										</div>
 										<div class="dz-info">
 											<ul>
@@ -287,57 +276,63 @@
 							      </div>
 							      <!-- Modal Body -->
 							      <div class="modal-body bg-light text-center">
-  <img src="images/product/1.jpeg" width="150" height="150" alt="">
-  <h4 class="title pb-2">Pure Shilajit By Sehatdar</h4>
-  <style>
-  .input-with-icon {
-    position: relative;
-  }
+									  <img src="images/product/1.jpeg" width="150" height="150" alt="">
+									  <h4 class="title pb-2">Pure Shilajit By Sehatdar</h4>
+									  <style>
+									  .input-with-icon {
+									    position: relative;
+									  }
 
-  .input-with-icon input,
-  .input-with-icon textarea {
-    padding-left: 2.5rem; /* Adjust to make space for the icon */
-    text-align: center;
-  }
+									  .input-with-icon input,
+									  .input-with-icon textarea {
+									    padding-left: 2.5rem; /* Adjust to make space for the icon */
+									    text-align: center;
+									  }
 
-  .input-with-icon i {
-    position: absolute;
-    right: 28%; /* Position the icon inside the input */
-    top: 70%;
-    transform: translateY(-50%);
-    color: #999; /* Adjust icon color */
-  }
-</style>
+									  .input-with-icon i {
+									    position: absolute;
+									    right: 28%; /* Position the icon inside the input */
+									    top: 70%;
+									    transform: translateY(-50%);
+									    color: #999; /* Adjust icon color */
+									  }
+									</style>
 
-<form id="checkoutForm" class="d-flex flex-column align-items-left">
-  <div class="mb-3 w-100 input-with-icon">
-    <label for="name" class="form-label">Your Name</label>
-    <i class="feather icon-user"></i>
-    <input type="text" class="form-control bg-light" id="name" placeholder="Enter your name" required>
-  </div>
+									<form id="checkoutForm" class="d-flex flex-column align-items-left" method="post">
+									  <div class="mb-3 w-100 input-with-icon">
+									    <label for="name" class="form-label">Your Name</label>
+									    <i class="feather icon-user"></i>
+									    <input type="text" class="form-control bg-light" id="name" name="name" placeholder="Enter Your Name" required>
+									  </div>
 
-  <div class="mb-3 w-100 input-with-icon">
-    <label for="phone" class="form-label">Your Phone Number</label>
-    <i class="feather icon-phone"></i>
-    <input type="text" class="form-control bg-light" id="phone" placeholder="Enter your Phone" required>
-  </div>
+									  <div class="mb-3 w-100 input-with-icon">
+									    <label for="phone" class="form-label">Your Phone Number</label>
+									    <i class="feather icon-phone"></i>
+									    <input type="text" class="form-control bg-light" id="phone" name="phone" placeholder="Enter Your Phone" required>
+									  </div>
 
-  <div class="mb-3 w-100 input-with-icon">
-    <label for="city" class="form-label">Your City</label>
-    <i class="feather icon-home"></i>
-    <input type="text" class="form-control bg-light" id="city" placeholder="Enter your city" required>
-  </div>
+									  <div class="mb-3 w-100 input-with-icon">
+									    <label for="city" class="form-label">Your City</label>
+									    <i class="feather icon-home"></i>
+									    <input type="text" class="form-control bg-light" id="city" name="city" placeholder="Enter Your City" required>
+									  </div>
 
-  <div class="mb-3 w-100 input-with-icon">
-    <label for="address" class="form-label">Your Full Address</label>
-    <i class="feather icon-map-pin"></i>
-    <input type="text" class="form-control bg-light" id="address" placeholder="Enter your address" required>
-  </div>
 
-  <button type="submit" class="btn btn-secondary w-100 pulse">Submit</button>
-</form>
+									  <div class="mb-3 w-100 input-with-icon">
+									    <label for="address" class="form-label">Your Full Address</label>
+									    <i class="feather icon-map-pin"></i>
+									    <input type="text" class="form-control bg-light" id="address" name="address" placeholder="Enter Your Address" required>
+									  </div>
 
-</div>
+									  <div class="mb-3 w-100 input-with-icon">
+									    <label for="qty" class="form-label">Quanity</label>
+									    <input type="number" class="form-control bg-light" id="qty" name="qty" min="1" max="5" placeholder="Type Quantity" required>
+									  </div>
+
+									  <button type="submit" class="btn btn-secondary w-100 pulse">Submit</button>
+									</form>
+
+									</div>
 
 							    </div>
 							  </div>
@@ -689,7 +684,25 @@ Order Sehatdar’s Pure Shilajit today and discover the transformative benefits 
     modal.hide();
   });
 </script>
+<script>
+  const url = 'https://script.google.com/macros/s/AKfycbwBSS8efE3xBiVZpC5siX49SimX0EGnx5LuTT73hwngRbzP3hbidFAk4xb1CuJhFUWr/exec';
+  const form = document.querySelector('#checkoutForm');
 
+  form.addEventListener("submit", (e) => {
+    e.preventDefault(); // Prevent form from submitting normally
+
+    const formData = new FormData(form); // Collect form data
+
+    // Send the form data via fetch to Google Apps Script
+    fetch(url, {
+      method: "POST",
+      body: formData
+    });
+
+    // Redirect to thank-you page immediately after starting the fetch request
+    window.location.href = "thank-you.html";
+  });
+</script>
 
 </body>
 </html>
