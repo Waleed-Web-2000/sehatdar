@@ -280,32 +280,65 @@
 							  <div class="modal-dialog modal-dialog-centered">
 							    <div class="modal-content">
 							      <!-- Modal Header -->
-							      <div class="modal-header">
-							        <h5 class="modal-title" id="checkoutModalLabel">Checkout Form</h5>
-							        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+							      <div class="modal-header bg-light">
+							        <button type="button" class="btn btn-secondary w-100" data-bs-dismiss="modal" aria-label="Close">
+							            Close Checkout &nbsp; <i class="ti-close"></i>
+							        </button>
 							      </div>
 							      <!-- Modal Body -->
-							      <div class="modal-body">
-							        <form id="checkoutForm">
-							          <div class="mb-3">
-							            <label for="name" class="form-label">Name</label>
-							            <input type="text" class="form-control" id="name" placeholder="Enter your name" required>
-							          </div>
-							          <div class="mb-3">
-							            <label for="phone" class="form-label">Phone</label>
-							            <input type="phone" class="form-control" id="phone" placeholder="Enter your Phone" required>
-							          </div>
-							          <div class="mb-3">
-							            <label for="email" class="form-label">Email</label>
-							            <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
-							          </div>
-							          <div class="mb-3">
-							            <label for="address" class="form-label">Address</label>
-							            <textarea class="form-control" id="address" rows="2" placeholder="Enter your address" required></textarea>
-							          </div>
-							          <button type="submit" class="btn btn-secondary w-100 pulse">Submit</button>
-							        </form>
-							      </div>
+							      <div class="modal-body bg-light text-center">
+  <img src="images/product/1.jpeg" width="150" height="150" alt="">
+  <h4 class="title pb-2">Pure Shilajit By Sehatdar</h4>
+  <style>
+  .input-with-icon {
+    position: relative;
+  }
+
+  .input-with-icon input,
+  .input-with-icon textarea {
+    padding-left: 2.5rem; /* Adjust to make space for the icon */
+    text-align: center;
+  }
+
+  .input-with-icon i {
+    position: absolute;
+    right: 28%; /* Position the icon inside the input */
+    top: 70%;
+    transform: translateY(-50%);
+    color: #999; /* Adjust icon color */
+  }
+</style>
+
+<form id="checkoutForm" class="d-flex flex-column align-items-left">
+  <div class="mb-3 w-100 input-with-icon">
+    <label for="name" class="form-label">Your Name</label>
+    <i class="feather icon-user"></i>
+    <input type="text" class="form-control bg-light" id="name" placeholder="Enter your name" required>
+  </div>
+
+  <div class="mb-3 w-100 input-with-icon">
+    <label for="phone" class="form-label">Your Phone Number</label>
+    <i class="feather icon-phone"></i>
+    <input type="text" class="form-control bg-light" id="phone" placeholder="Enter your Phone" required>
+  </div>
+
+  <div class="mb-3 w-100 input-with-icon">
+    <label for="city" class="form-label">Your City</label>
+    <i class="feather icon-home"></i>
+    <input type="text" class="form-control bg-light" id="city" placeholder="Enter your city" required>
+  </div>
+
+  <div class="mb-3 w-100 input-with-icon">
+    <label for="address" class="form-label">Your Full Address</label>
+    <i class="feather icon-map-pin"></i>
+    <input type="text" class="form-control bg-light" id="address" placeholder="Enter your address" required>
+  </div>
+
+  <button type="submit" class="btn btn-secondary w-100 pulse">Submit</button>
+</form>
+
+</div>
+
 							    </div>
 							  </div>
 							</div>
