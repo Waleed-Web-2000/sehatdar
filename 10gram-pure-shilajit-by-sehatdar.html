@@ -52,13 +52,7 @@
 
 <body>
 <div class="page-wraper">
-	
-	<div id="loading-area"  class="preloader-wrapper-3">
-		<div class="loader">
-			<div class="ball"></div>
-		</div>
-	</div>	
-	
+		
 	<!-- Header Star -->
 	<header class="site-header mo-left header style-1 header-transparent">		
 		
@@ -255,9 +249,46 @@
 									</div>
 								</div>
 							</div>
+
+							<!-- The Modal -->
+							<div class="modal fade" id="checkoutModal" tabindex="-1" aria-labelledby="checkoutModalLabel" aria-hidden="true">
+							  <div class="modal-dialog modal-dialog-centered">
+							    <div class="modal-content">
+							      <!-- Modal Header -->
+							      <div class="modal-header">
+							        <h5 class="modal-title" id="checkoutModalLabel">Checkout Form</h5>
+							        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+							      </div>
+							      <!-- Modal Body -->
+							      <div class="modal-body">
+							        <form id="checkoutForm">
+							          <div class="mb-3">
+							            <label for="name" class="form-label">Name</label>
+							            <input type="text" class="form-control" id="name" placeholder="Enter your name" required>
+							          </div>
+							          <div class="mb-3">
+							            <label for="phone" class="form-label">Phone</label>
+							            <input type="phone" class="form-control" id="phone" placeholder="Enter your Phone" required>
+							          </div>
+							          <div class="mb-3">
+							            <label for="email" class="form-label">Email</label>
+							            <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
+							          </div>
+							          <div class="mb-3">
+							            <label for="address" class="form-label">Address</label>
+							            <textarea class="form-control" id="address" rows="2" placeholder="Enter your address" required></textarea>
+							          </div>
+							          <button type="submit" class="btn btn-secondary w-100 pulse">Submit</button>
+							        </form>
+							      </div>
+							    </div>
+							  </div>
+							</div>
+							<!-- The Modal End --> 
+
 							<div class="col-xl-5">
 								<div class="cart-detail">
-									<button onclick="openModal()" class="btn btn-secondary w-100 m-b20">Buy Now</button>
+									<button type="button" class="btn btn-secondary w-100 m-b20" data-bs-toggle="modal" data-bs-target="#checkoutModal">Buy Now</button>
 									<div class="icon-bx-wraper style-4 m-b15">
 										<div class="icon-bx">
 											<i class="flaticon flaticon-ship"></i>
@@ -588,6 +619,18 @@ Order Sehatdar’s Pure Shilajit today and discover the transformative benefits 
 <script src="js/custom.js"></script><!-- CUSTOM JS -->
 
 	
+<script>
+  document.getElementById("checkoutForm").addEventListener("submit", function(event){
+    event.preventDefault(); // Prevent form from submitting
+
+    // You can add your form submission code here
+    alert("Checkout form submitted!");
+
+    // Close the modal after submission
+    var modal = new bootstrap.Modal(document.getElementById("checkoutModal"));
+    modal.hide();
+  });
+</script>
 
 
 </body>

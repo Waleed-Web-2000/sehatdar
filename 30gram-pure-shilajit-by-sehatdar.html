@@ -7,7 +7,7 @@
 	<title>30gram Pure Shilajit By Sehatdar | Sehatdar</title>
 	
 	<!-- Meta -->
-	<meta charset="utf-8">
+	<meta charset="utf-8"> 
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="author" content="DexignZone">
 	<meta name="robots" content="index, follow">
@@ -52,13 +52,7 @@
 
 <body>
 <div class="page-wraper">
-	
-	<div id="loading-area"  class="preloader-wrapper-3">
-		<div class="loader">
-			<div class="ball"></div>
-		</div>
-	</div>	
-	
+		
 	<!-- Header Star -->
 	<header class="site-header mo-left header style-1 header-transparent">		
 		
@@ -255,9 +249,46 @@
 									</div>
 								</div>
 							</div>
+
+							<!-- The Modal -->
+							<div class="modal fade" id="checkoutModal" tabindex="-1" aria-labelledby="checkoutModalLabel" aria-hidden="true">
+							  <div class="modal-dialog modal-dialog-centered">
+							    <div class="modal-content">
+							      <!-- Modal Header -->
+							      <div class="modal-header">
+							        <h5 class="modal-title" id="checkoutModalLabel">Checkout Form</h5>
+							        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+							      </div>
+							      <!-- Modal Body -->
+							      <div class="modal-body">
+							        <form id="checkoutForm">
+							          <div class="mb-3">
+							            <label for="name" class="form-label">Name</label>
+							            <input type="text" class="form-control" id="name" placeholder="Enter your name" required>
+							          </div>
+							          <div class="mb-3">
+							            <label for="phone" class="form-label">Phone</label>
+							            <input type="phone" class="form-control" id="phone" placeholder="Enter your Phone" required>
+							          </div>
+							          <div class="mb-3">
+							            <label for="email" class="form-label">Email</label>
+							            <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
+							          </div>
+							          <div class="mb-3">
+							            <label for="address" class="form-label">Address</label>
+							            <textarea class="form-control" id="address" rows="2" placeholder="Enter your address" required></textarea>
+							          </div>
+							          <button type="submit" class="btn btn-secondary w-100 pulse">Submit</button>
+							        </form>
+							      </div>
+							    </div>
+							  </div>
+							</div>
+							<!-- The Modal End --> 
+
 							<div class="col-xl-5">
 								<div class="cart-detail">
-									<button onclick="openModal()" class="btn btn-outline-secondary w-100 m-b20">Buy Now</button>
+									<button type="button" class="btn btn-secondary w-100 m-b20" data-bs-toggle="modal" data-bs-target="#checkoutModal">Buy Now</button>
 									<div class="icon-bx-wraper style-4 m-b15">
 										<div class="icon-bx">
 											<i class="flaticon flaticon-ship"></i>
@@ -449,45 +480,6 @@ Order Sehatdar’s Pure Shilajit today and discover the transformative benefits 
 				</div>
 			</div>
 		</section>
-
-		
-		<!-- Modal Structure -->
-<div id="myModal" class="modal align-items-center">
-        
-        <!-- Form Content -->
-        <div class="contact-area1">
-        	<span onclick="closeModal()"><i class="fas fa-close"></i></span>
-            <form class="dz-form dzForm" method="POST" action="script/contact_smtp.php">
-                <input type="hidden" class="form-control" name="dzToDo" value="Contact">
-                <input type="hidden" class="form-control" name="reCaptchaEnable" value="0">
-                <div class="dzFormMsg"></div>
-                <label class="form-label">Your Name</label>
-                <div class="input-group">
-                    <input required type="text" class="form-control" name="dzName">
-                </div>
-                <label class="form-label">Email Address</label>
-                <div class="input-group">
-                    <input required type="email" class="form-control" name="dzEmail">
-                </div>
-                <label class="form-label">Phone Number</label>
-                <div class="input-group">
-                    <input required type="tel" class="form-control" name="dzPhoneNumber">
-                </div>
-                <label class="form-label">Message</label>
-                <div class="input-group m-b30">
-                    <textarea name="dzMessage" rows="4" required class="form-control m-b10"></textarea>
-                </div>
-                <div class="input-recaptcha m-b30">
-                    <div class="g-recaptcha" data-sitekey="<!-- Put Your Recaptcha Secret Key -->" data-callback="verifyRecaptchaCallback" data-expired-callback="expiredRecaptchaCallback"></div>
-                    <input class="form-control d-none" style="display:none;" data-recaptcha="true" required data-error="Please complete the Captcha">
-                </div>
-                <div>
-                    <button name="submit" type="submit" value="submit" class="btn w-100 btn-white btnhover">SUBMIT</button>
-                </div>
-            </form>
-        </div>
-</div>
-	<!-- End Modal Structure -->
 		
 	</div>
 	
@@ -570,23 +562,16 @@ Order Sehatdar’s Pure Shilajit today and discover the transformative benefits 
 <script src="js/custom.js"></script><!-- CUSTOM JS -->
 
 <script>
-    // Function to open the modal
-    function openModal() {
-        document.getElementById("myModal").style.display = "block";
-    }
+  document.getElementById("checkoutForm").addEventListener("submit", function(event){
+    event.preventDefault(); // Prevent form from submitting
 
-    // Function to close the modal
-    function closeModal() {
-        document.getElementById("myModal").style.display = "none";
-        location.reload();
-    }
+    // You can add your form submission code here
+    alert("Checkout form submitted!");
 
-    // Close modal when clicking outside of the modal content
-    window.onclick = function(event) {
-        if (event.target == document.getElementById("myModal")) {
-            closeModal();
-        }
-    }
+    // Close the modal after submission
+    var modal = new bootstrap.Modal(document.getElementById("checkoutModal"));
+    modal.hide();
+  });
 </script>
 
 </body>
