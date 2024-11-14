@@ -301,36 +301,42 @@
 									<form id="checkoutForm" class="d-flex flex-column align-items-left" method="post">
 									  <div class="mb-3 w-100 input-with-icon">
 									    <label for="name" class="form-label">Your Name</label>
-									    <i class="feather icon-user"></i>
+									    
 									    <input type="text" class="form-control bg-light" id="name" name="name" placeholder="Enter Your Name" required>
 									  </div>
 
 									  <div class="mb-3 w-100 input-with-icon">
 									    <label for="phone" class="form-label">Your Phone Number</label>
-									    <i class="feather icon-phone"></i>
+									    
 									    <input type="text" class="form-control bg-light" id="phone" name="phone" placeholder="Enter Your Phone" required>
 									  </div>
 
 									  <div class="mb-3 w-100 input-with-icon">
 									    <label for="city" class="form-label">Your City</label>
-									    <i class="feather icon-home"></i>
+									    
 									    <input type="text" class="form-control bg-light" id="city" name="city" placeholder="Enter Your City" required>
 									  </div>
 
 
 									  <div class="mb-3 w-100 input-with-icon">
 									    <label for="address" class="form-label">Your Full Address</label>
-									    <i class="feather icon-map-pin"></i>
+									    
 									    <input type="text" class="form-control bg-light" id="address" name="address" placeholder="Enter Your Address" required>
 									  </div>
 
 									  <div class="mb-3 w-100 input-with-icon">
 									    <label for="qty" class="form-label">Quanity</label>
-									    <i class="feather icon-home"></i>
+									    
 									    <input type="number" class="form-control bg-light" id="qty" name="qty" min="1" max="5" placeholder="Type Quantity" required>
 									  </div>
 
-									  <button type="submit" class="btn btn-secondary w-100 pulse">Submit</button>
+									  <div class="mb-3 w-100 input-with-icon">
+									    <label for="pname" class="form-label">Product Name</label>
+									    
+									    <input type="hidden" class="form-control bg-light" name="pname" value="30gram" required>
+									  </div>
+
+									  <button type="submit" class="btn btn-secondary w-100 pulse">Place Order</button>
 									</form>
 
 									</div>
@@ -627,7 +633,25 @@ Order Sehatdar’s Pure Shilajit today and discover the transformative benefits 
     modal.hide();
   });
 </script>
+<script>
+  const url = 'https://script.google.com/macros/s/AKfycbwBSS8efE3xBiVZpC5siX49SimX0EGnx5LuTT73hwngRbzP3hbidFAk4xb1CuJhFUWr/exec';
+  const form = document.querySelector('#checkoutForm');
 
+  form.addEventListener("submit", (e) => {
+    e.preventDefault(); // Prevent form from submitting normally
+
+    const formData = new FormData(form); // Collect form data
+
+    // Send the form data via fetch to Google Apps Script
+    fetch(url, {
+      method: "POST",
+      body: formData
+    });
+
+    // Redirect to thank-you page immediately after starting the fetch request
+    window.location.href = "thank-you.html";
+  });
+</script>
 
 </body>
 </html>
