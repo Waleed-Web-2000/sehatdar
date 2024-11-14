@@ -742,12 +742,12 @@ Order Sehatdar’s Pure Shilajit today and discover the transformative benefits 
         // Group reviews by product_id
         const reviewsGroupedByProduct = groupReviewsByProduct(data.values);
 
-        // Update review count and average rating for product_id 2 (adjust based on your requirements)
-        updateReviewCount(reviewsGroupedByProduct['2']?.length || 0);
-        updateAverageRating(reviewsGroupedByProduct['2']);
+        // Update review count and average rating for product_id 7 (adjust based on your requirements)
+        updateReviewCount(reviewsGroupedByProduct['7']?.length || 0);
+        updateAverageRating(reviewsGroupedByProduct['7']);
 
-        // Display reviews for product_id 2 (or any other product)
-        displayComments(reviewsGroupedByProduct['2'] || []);
+        // Display reviews for product_id 7 (or any other product)
+        displayComments(reviewsGroupedByProduct['7'] || []);
       } else {
         console.error('Error: No values found in response. Full response:', data);
       }
