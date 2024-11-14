@@ -208,10 +208,10 @@
 											<div class="dz-content-start">
 												<span class="badge bg-secondary mb-2">SALE 10% Off</span>
 												<h4 class="title mb-1">10gram Pure Shilajit By Sehatdar</h4>
-												<div class="review-num text-secondary">
+												<div class="review-num ">
 												  ( <span class="text-secondary" id="average-rating">No reviews yet</span>)
 												</div>
-												(Reviews <span id="review-count">0</span>)
+												<span id="review-count" class="text-secondary">(Reviews 0)</span>
 											</div>
 										</div>
 										<div class="meta-content m-b20 d-flex align-items-end">
@@ -786,7 +786,7 @@
       averageRatingElement.innerHTML = '';  // Clear star ratings if no reviews
     }
   }
-
+ 
   // This function returns a string of stars based on the rating value
   function getStars(rating) {
     let stars = '';
