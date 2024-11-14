@@ -226,8 +226,8 @@
 															<i class="flaticon-star-1"></i>
 														</li>
 													</ul>
-													<span class="text-secondary me-2">4 Rating</span>
-													<a href="javascript:void(0);">(10 customer reviews)</a>
+													<span class="text-secondary me-2" id="average-rating">( Rating)</span>
+													<a href="javascript:void(0);" id="review-count">( customer reviews)</a>
 												</div>
 											</div>
 										</div>
@@ -636,10 +636,6 @@ Order Sehatdar’s Pure Shilajit today and discover the transformative benefits 
 </script>
 
 
-<!-- <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">
-  Reviews (<span id="review-count">0</span>) - Average Rating: <span id="average-rating">0</span>
-</button> -->
-
 
 <script>
   const API_KEY = 'AIzaSyCUUUA6pfyFEIk0S3hcaqkdqb3NdXnE20g'; // Replace with your actual API key
@@ -698,7 +694,7 @@ Order Sehatdar’s Pure Shilajit today and discover the transformative benefits 
       const stars = getStars(rating);  // Get star rating based on the rating value
 
       listItem.innerHTML = `
-        <div class="comment-body">
+        <div class="comment-body mb-2">
           <div class="comment-author vcard">
             <img src="images/profile2.jpg" alt="/" width="50" height="50" class="avatar">
             <cite class="fn">${name}</cite><br>
