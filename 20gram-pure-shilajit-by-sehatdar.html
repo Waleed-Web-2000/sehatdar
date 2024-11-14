@@ -649,7 +649,25 @@ Order Sehatdar’s Pure Shilajit today and discover the transformative benefits 
     modal.hide();
   });
 </script>
+<script>
+  const url = 'https://script.google.com/macros/s/AKfycbwBSS8efE3xBiVZpC5siX49SimX0EGnx5LuTT73hwngRbzP3hbidFAk4xb1CuJhFUWr/exec';
+  const form = document.querySelector('#checkoutForm');
 
+  form.addEventListener("submit", (e) => {
+    e.preventDefault(); // Prevent form from submitting normally
+
+    const formData = new FormData(form); // Collect form data
+
+    // Send the form data via fetch to Google Apps Script
+    fetch(url, {
+      method: "POST",
+      body: formData
+    });
+
+    // Redirect to thank-you page immediately after starting the fetch request
+    window.location.href = "thank-you.html";
+  });
+</script>
 
 </body>
 </html>
