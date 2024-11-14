@@ -209,9 +209,10 @@
 												<span class="badge bg-secondary mb-2">SALE 10% Off</span>
 												<h4 class="title mb-1">10gram Pure Shilajit By Sehatdar</h4>
 												<div class="review-num">
-													<span class="text-secondary me-2">(<span id="average-rating">0</span>)</span><br>
-													<a href="javascript:void(0);">Reviews (<span id="review-count">0</span>)</a>
-												</div>
+  <span class="text-secondary me-2">(<span id="average-rating">No reviews yet</span>)</span><br>
+  
+</div>
+<a href="javascript:void(0);">Reviews (<span id="review-count">0</span>)</a>
 											</div>
 										</div>
 										<div class="meta-content m-b20 d-flex align-items-end">
@@ -366,9 +367,7 @@
 								<button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Description</button>
 							</li>
 							<li class="nav-item" role="presentation">
-								<button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">
-  Reviews (<span id="review-count"></span>)
-</button>
+								<button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">Reviews</button>
 							</li>
 						</ul>
 						<div class="tab-content" id="myTabContent">
@@ -635,13 +634,13 @@ Order Sehatdar’s Pure Shilajit today and discover the transformative benefits 
       if (data.values) {
         // Group reviews by product_id
         const reviewsGroupedByProduct = groupReviewsByProduct(data.values);
-        
-        // Display reviews for product_id 2
-        displayComments(reviewsGroupedByProduct['2'] || []);
-        
-        // Update review count and average rating for product_id 2
+
+        // Update review count and average rating for product_id 2 (adjust based on your requirements)
         updateReviewCount(reviewsGroupedByProduct['2']?.length || 0);
         updateAverageRating(reviewsGroupedByProduct['2']);
+
+        // Display reviews for product_id 2 (or any other product)
+        displayComments(reviewsGroupedByProduct['2'] || []);
       } else {
         console.error('Error: No values found in response. Full response:', data);
       }
@@ -694,7 +693,7 @@ Order Sehatdar’s Pure Shilajit today and discover the transformative benefits 
 
   function updateReviewCount(count) {
     const reviewCountElement = document.getElementById('review-count');
-    reviewCountElement.textContent = count;
+    reviewCountElement.textContent = count;  // Update the review count on the button
   }
 
   function updateAverageRating(reviews) {
@@ -709,6 +708,7 @@ Order Sehatdar’s Pure Shilajit today and discover the transformative benefits 
       averageRatingElement.innerHTML += `<div class="star-rating">${avgStars}</div>`;
     } else {
       averageRatingElement.textContent = 'No reviews yet';
+      averageRatingElement.innerHTML = '';  // Clear star ratings if no reviews
     }
   }
 
@@ -726,6 +726,7 @@ Order Sehatdar’s Pure Shilajit today and discover the transformative benefits 
 
   fetchSheetData();
 </script>
+
 
 
 
