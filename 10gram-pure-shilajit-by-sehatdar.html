@@ -209,9 +209,9 @@
 												<span class="badge bg-secondary mb-2">SALE 10% Off</span>
 												<h4 class="title mb-1">10gram Pure Shilajit By Sehatdar</h4>
 												<div class="review-num">
-												  (<span class="text-secondary me-2" id="average-rating">No reviews yet</span>)<br>
-												  (Reviews <span id="review-count">0</span>)
+												  (<span class="text-secondary me-2" id="average-rating">No reviews yet</span>)
 												</div>
+												(Reviews <span id="review-count">0</span>)
 											</div>
 										</div>
 										<div class="meta-content m-b20 d-flex align-items-end">
@@ -757,7 +757,7 @@
           </div>
           <div class="comment-content dz-page-text">
             <p>${review || 'No review available.'}</p>
-            <span class="star-rating">${stars}</span> <!-- Add stars here -->
+            <p class="star-rating">${stars}</p> <!-- Add stars here -->
           </div>
         </div>
       `;
@@ -776,7 +776,7 @@
     if (reviews && reviews.length > 0) {
       const totalRating = reviews.reduce((sum, review) => sum + parseInt(review.rating, 10), 0);
       const avgRating = totalRating / reviews.length;
-      averageRatingElement.textContent = `Average Rating: ${avgRating.toFixed(2)}`;  // Display average rating with two decimal points
+      averageRatingElement.textContent = `Avg Rating : ${avgRating.toFixed(2)}`;  // Display average rating with two decimal points
 
       // Update the stars based on average rating
       const avgStars = getStars(avgRating);
