@@ -209,10 +209,10 @@
 												<span class="badge bg-secondary mb-2">SALE 10% Off</span>
 												<h4 class="title mb-1">10gram Pure Shilajit By Sehatdar</h4>
 												<div class="review-num">
-  <span class="text-secondary me-2">(<span id="average-rating">No reviews yet</span>)</span><br>
-  
+(<span class="text-secondary me-2" id="average-rating">No reviews yet</span>)<br>
+  <span>Reviews (<span id="review-count">0</span>)</span>
 </div>
-<a href="javascript:void(0);">Reviews (<span id="review-count">0</span>)</a>
+
 											</div>
 										</div>
 										<div class="meta-content m-b20 d-flex align-items-end">
@@ -375,19 +375,19 @@
 								<div class="detail-bx text-center">
 									<h5 class="title">10 grams of Pure Shilajit by Sehatdar</h5>
 									<p class="para-text">
-										
-Experience the power of nature with Sehatdar’s Pure Shilajit, now available in a 10-gram pack. Harvested from the pristine heights of the Himalayas, our Shilajit is a potent natural supplement known for its ability to boost energy, enhance stamina, and improve mental clarity. Rich in minerals, fulvic acid, and antioxidants, Sehatdar’s Shilajit supports overall health, vitality, and well-being.<br><br>
+																			
+									Experience the power of nature with Sehatdar’s Pure Shilajit, now available in a 10-gram pack. Harvested from the pristine heights of the Himalayas, our Shilajit is a potent natural supplement known for its ability to boost energy, enhance stamina, and improve mental clarity. Rich in minerals, fulvic acid, and antioxidants, Sehatdar’s Shilajit supports overall health, vitality, and well-being.<br><br>
 
-Perfect for those seeking a natural remedy to combat fatigue, improve endurance, and support cognitive function, this 10-gram package is ideal for regular use.<br><br>
+									Perfect for those seeking a natural remedy to combat fatigue, improve endurance, and support cognitive function, this 10-gram package is ideal for regular use.<br><br>
 
-<strong>Key Benefits:</strong><br>
+									<strong>Key Benefits:</strong><br>
 
-Increases energy and stamina<br>
-Supports cognitive function and mental clarity<br>
-Packed with essential minerals and antioxidants<br>
-100% pure and natural, free from additives or fillers<br>
-Order Sehatdar’s Pure Shilajit today and discover the transformative benefits of this ancient Ayurvedic remedy.<br>
-									</p>
+									Increases energy and stamina<br>
+									Supports cognitive function and mental clarity<br>
+									Packed with essential minerals and antioxidants<br>
+									100% pure and natural, free from additives or fillers<br>
+									Order Sehatdar’s Pure Shilajit today and discover the transformative benefits of this ancient Ayurvedic remedy.<br>
+																		</p>
 									
 								</div>
 								<div class="row g-lg-4 g-3">
@@ -415,13 +415,24 @@ Order Sehatdar’s Pure Shilajit today and discover the transformative benefits 
   #comment-list {
     list-style: none;
     padding: 0;
+    margin: 0;
+    font-family: 'Arial', sans-serif;
   }
 
   .comment {
-    padding: 15px;
-    border-bottom: 1px solid #ddd;
+    padding: 20px;
+    border-bottom: 1px solid #f1f1f1;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
+    margin-bottom: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+  }
+
+  .comment:hover {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
   }
 
   .comment-author {
@@ -433,17 +444,78 @@ Order Sehatdar’s Pure Shilajit today and discover the transformative benefits 
   .avatar {
     border-radius: 50%;
     margin-right: 10px;
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border: 2px solid #ddd;
   }
 
   .fn {
     font-weight: bold;
+    font-size: 1.1em;
+    color: #333;
     margin-right: 5px;
   }
 
   .comment-content {
     max-width: 600px;
+    color: #555;
+    font-size: 1em;
   }
+
+  .comment-content p {
+    margin-bottom: 10px;
+    line-height: 1.5;
+  }
+
+  .star-rating {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+  }
+
+  .star-rating span {
+    font-size: 1.1em;
+    color: #f39c12; /* Gold color for stars */
+  }
+
+  .star-rating span.empty {
+    color: #ddd; /* Light grey color for empty stars */
+  }
+
+  .review-num {
+    font-size: 1.2em;
+    color: #333;
+    margin-top: 20px;
+  }
+
+  .review-num a {
+    color: #f39c12;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  .review-num a:hover {
+    text-decoration: underline;
+  }
+
+  /* Button styling */
+  .nav-link {
+    font-size: 1.1em;
+    padding: 10px 20px;
+    background-color: #f39c12;
+    color: white;
+    border-radius: 30px;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease;
+  }
+
+  .nav-link:hover {
+    background-color: #e67e22;
+  }
+
 </style>
+
 
 
 
