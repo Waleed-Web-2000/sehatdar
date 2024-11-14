@@ -377,7 +377,7 @@
         // Group reviews by product_id
         const reviewsGroupedByProduct = groupReviewsByProduct(data.values);
 
-        // Display all reviews for all products
+        // Display all reviews for all products with avg rating and review count
         displayAllComments(reviewsGroupedByProduct);
       } else {
         console.error('Error: No values found in response. Full response:', data);
@@ -411,6 +411,20 @@
     Object.keys(reviewsGroupedByProduct).forEach(productId => {
       const reviews = reviewsGroupedByProduct[productId];
 
+      // Update the review count and average rating for each product
+      const reviewCount = reviews.length;
+      const averageRating = calculateAverageRating(reviews);
+
+      // Create a product section with the review count and average rating
+      const productSection = document.createElement('div');
+      productSection.className = 'product-reviews';
+      productSection.innerHTML = `
+        <h3>Product ID: ${productId}</h3>
+        <p>Review Count: <span id="review-count-${productId}">${reviewCount}</span></p>
+        <p>Average Rating: <span id="avg-rating-${productId}">${averageRating}</span></p>
+      `;
+      commentList.appendChild(productSection);
+
       reviews.forEach(({ name, email, rating, review }, index) => {
         const listItem = document.createElement('li');
         listItem.className = 'comment even thread-even depth-1 comment';
@@ -437,24 +451,14 @@
     });
   }
 
-  function updateReviewCount(count) {
-    const reviewCountElement = document.getElementById('review-count');
-    reviewCountElement.textContent = count;  // Update the review count on the button
-  }
-
-  function updateAverageRating(reviews) {
-    const averageRatingElement = document.getElementById('average-rating');
+  // Calculate the average rating for each product
+  function calculateAverageRating(reviews) {
     if (reviews && reviews.length > 0) {
       const totalRating = reviews.reduce((sum, review) => sum + parseInt(review.rating, 10), 0);
       const avgRating = totalRating / reviews.length;
-      averageRatingElement.textContent = `Avg Rating : ${avgRating.toFixed(2)} `;  // Display average rating with two decimal points
-
-      // Update the stars based on average rating
-      const avgStars = getStars(avgRating);
-      averageRatingElement.innerHTML += `<span class="star-rating">${avgStars}</span>`; // Stars next to the average rating
+      return avgRating.toFixed(2);  // Return the average rating rounded to 2 decimal places
     } else {
-      averageRatingElement.textContent = 'No reviews yet';
-      averageRatingElement.innerHTML = '';  // Clear star ratings if no reviews
+      return 'No reviews yet';
     }
   }
 
@@ -487,6 +491,7 @@
   fetchSheetData();
 
 </script>
+
 
 
 
