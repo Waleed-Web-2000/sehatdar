@@ -226,8 +226,8 @@
 															<i class="flaticon-star-1"></i>
 														</li>
 													</ul>
-													<span class="text-secondary me-2" id="average-rating">( Rating)</span>
-													<a href="javascript:void(0);" id="review-count">( customer reviews)</a>
+													<span class="text-secondary me-2">Rating (<span id="average-rating">0</span>)</span>
+													<a href="javascript:void(0);">Reviews (<span id="review-count">0</span>)</a>
 												</div>
 											</div>
 										</div>
@@ -635,8 +635,6 @@ Order Sehatdar’s Pure Shilajit today and discover the transformative benefits 
   });
 </script>
 
-
-
 <script>
   const API_KEY = 'AIzaSyCUUUA6pfyFEIk0S3hcaqkdqb3NdXnE20g'; // Replace with your actual API key
   const SPREADSHEET_ID = '1Q35xjABOFA6q1oeDmutsSntONS1xlM059Z-MO1a6wgM'; // Replace with your spreadsheet ID
@@ -721,9 +719,13 @@ Order Sehatdar’s Pure Shilajit today and discover the transformative benefits 
     if (reviews && reviews.length > 0) {
       const totalRating = reviews.reduce((sum, review) => sum + parseInt(review.rating, 10), 0);
       const avgRating = totalRating / reviews.length;
-      averageRatingElement.textContent = avgRating.toFixed(2);  // Display average rating with two decimal points
+      averageRatingElement.textContent = `Average Rating: ${avgRating.toFixed(2)}`;  // Display average rating with two decimal points
+
+      // Update the stars based on average rating
+      const avgStars = getStars(avgRating);
+      averageRatingElement.innerHTML += `<div class="star-rating">${avgStars}</div>`;
     } else {
-      averageRatingElement.textContent = '0';
+      averageRatingElement.textContent = 'No reviews yet';
     }
   }
 
@@ -731,7 +733,7 @@ Order Sehatdar’s Pure Shilajit today and discover the transformative benefits 
   function getStars(rating) {
     let stars = '';
     if (rating) {
-      const numStars = parseInt(rating, 10); // Parse rating to an integer
+      const numStars = Math.round(parseFloat(rating)); // Round the rating to the nearest integer
       for (let i = 0; i < numStars; i++) {
         stars += '⭐'; // Use star character for each point in the rating
       }
@@ -741,6 +743,9 @@ Order Sehatdar’s Pure Shilajit today and discover the transformative benefits 
 
   fetchSheetData();
 </script>
+
+
+
 
 
 
