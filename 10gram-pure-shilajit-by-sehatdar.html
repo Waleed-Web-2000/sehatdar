@@ -209,10 +209,9 @@
 												<span class="badge bg-secondary mb-2">SALE 10% Off</span>
 												<h4 class="title mb-1">10gram Pure Shilajit By Sehatdar</h4>
 												<div class="review-num">
-(<span class="text-secondary me-2" id="average-rating">No reviews yet</span>)<br>
-  (Reviews <span id="review-count">0</span>)
-</div>
-
+												  (<span class="text-secondary me-2" id="average-rating">No reviews yet</span>)<br>
+												  (Reviews <span id="review-count">0</span>)
+												</div>
 											</div>
 										</div>
 										<div class="meta-content m-b20 d-flex align-items-end">
@@ -469,13 +468,13 @@
   }
 
   .star-rating {
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    margin-top: 2px;
+    font-size: 14px; /* Smaller stars */
+    margin-left: 10px;
   }
 
   .star-rating span {
-    font-size: 1em;
     color: #f39c12; /* Gold color for stars */
   }
 
@@ -487,6 +486,9 @@
     font-size: 1.2em;
     color: #333;
     margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 
   .review-num a {
@@ -515,6 +517,7 @@
   }
 
 </style>
+
 
 
 
@@ -777,7 +780,7 @@
 
       // Update the stars based on average rating
       const avgStars = getStars(avgRating);
-      averageRatingElement.innerHTML += `<div class="star-rating">${avgStars}</div>`;
+      averageRatingElement.innerHTML += `<span class="star-rating">${avgStars}</span>`; // Stars next to the average rating
     } else {
       averageRatingElement.textContent = 'No reviews yet';
       averageRatingElement.innerHTML = '';  // Clear star ratings if no reviews
