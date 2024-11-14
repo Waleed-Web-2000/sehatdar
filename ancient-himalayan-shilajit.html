@@ -183,7 +183,8 @@
 						</div>
 					</div>
 
-					<div class="col-lg-6 left-box text-center">
+					
+<div class="col-lg-6 left-box text-center">
   <h3 class="title wow fadeInUp" data-wow-delay="1.2s">Shilajit Reviews (<span id="review-count-header">0</span>)</h3>
   <div class="rating-container">
     <!-- Display the average rating -->
@@ -193,6 +194,7 @@
 </div>
 
 <ul id="comment-list"></ul>
+
 
 
 
@@ -364,7 +366,7 @@
 <script>
   const API_KEY = 'AIzaSyCUUUA6pfyFEIk0S3hcaqkdqb3NdXnE20g'; // Replace with your actual API key
   const SPREADSHEET_ID = '1Q35xjABOFA6q1oeDmutsSntONS1xlM059Z-MO1a6wgM'; // Replace with your spreadsheet ID
-  const RANGE = 'Sheet1!A2:D'; // Adjust range if columns differ
+  const RANGE = 'Sheet1!A2:E'; // Adjust range to include the Rating column
 
   async function fetchSheetData() {
     const url = `https://sheets.googleapis.com/v4/spreadsheets/${SPREADSHEET_ID}/values/${RANGE}?key=${API_KEY}`;
@@ -462,6 +464,7 @@
 
   fetchSheetData();
 </script>
+
 
 </body>
 </html>
