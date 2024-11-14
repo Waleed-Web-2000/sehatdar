@@ -378,11 +378,11 @@ async function fetchSheetData() {
       const reviewsGroupedByProduct = groupReviewsByProduct(data.values);
 
       // Update review count and average rating for product_id 7 (or any other specific product)
-      updateReviewCount(reviewsGroupedByProduct['7']?.length || 0);
-      updateAverageRating(reviewsGroupedByProduct['7'] || []);
+      updateReviewCount(reviewsGroupedByProduct['7,2,6']?.length || 0);
+      updateAverageRating(reviewsGroupedByProduct['7,2,6'] || []);
 
       // Display reviews for product_id 7 (or any other product)
-      displayComments(reviewsGroupedByProduct['7'] || []);
+      displayComments(reviewsGroupedByProduct['7,2,6'] || []);
     } else {
       console.error('Error: No values found in response. Full response:', data);
     }
