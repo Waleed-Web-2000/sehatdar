@@ -434,7 +434,7 @@
     if (reviews && reviews.length > 0) {
       const totalRating = reviews.reduce((sum, row) => sum + parseFloat(row[3] || 0), 0); // Column D is the rating
       const avgRating = totalRating / reviews.length;
-      averageRatingElement.textContent = `Avg Rating : ${avgRating.toFixed(2)}`;  // Display average rating with two decimal points
+      averageRatingElement.textContent = `Avg Rating : ${avgRating.toFixed(2)} `;  // Display average rating with two decimal points
 
       // Update the stars based on average rating
       const avgStars = getStars(avgRating);
