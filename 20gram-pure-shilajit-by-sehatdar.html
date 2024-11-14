@@ -210,8 +210,8 @@
 												<div class="review-num ">
 												  ( <span class="text-secondary" id="average-rating">No reviews yet</span>)
 												</div>
-												<span class="text-secondary">(Reviews 0)<span id="review-count" class="text-secondary"></span></span>
-											</div>
+												<span class="text-secondary">(Reviews : <span id="review-count" class="text-secondary"></span>)</span>
+											</div> 
 										</div>
 										<div class="meta-content m-b20 d-flex align-items-end">
 
@@ -763,7 +763,7 @@ Order Sehatdar’s Pure Shilajit today and discover the transformative benefits 
           </div>
           <div class="comment-content dz-page-text">
             <p>${review || 'No review available.'}</p>
-            <p class="star-rating">${stars}</p> <!-- Add stars here -->
+            <p class="star-rating">${stars} ${rating}</p> <!-- Add stars here -->
           </div>
         </div>
       `;

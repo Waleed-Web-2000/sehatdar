@@ -211,8 +211,8 @@
 												<div class="review-num ">
 												  ( <span class="text-secondary" id="average-rating">No reviews yet</span>)
 												</div>
-												<span class="text-secondary">(Reviews 0)<span id="review-count" class="text-secondary"></span></span>
-											</div>
+												<span class="text-secondary">(Reviews : <span id="review-count" class="text-secondary"></span>)</span>
+											</div> 
 										</div>
 										<div class="meta-content m-b20 d-flex align-items-end">
 										</div>
@@ -725,12 +725,12 @@
         // Group reviews by product_id
         const reviewsGroupedByProduct = groupReviewsByProduct(data.values);
 
-        // Update review count and average rating for product_id 6 (adjust based on your requirements)
-        updateReviewCount(reviewsGroupedByProduct['6']?.length || 0);
-        updateAverageRating(reviewsGroupedByProduct['6']);
+        // Update review count and average rating for product_id 7 (adjust based on your requirements)
+        updateReviewCount(reviewsGroupedByProduct['7']?.length || 0);
+        updateAverageRating(reviewsGroupedByProduct['7']);
 
-        // Display reviews for product_id 6 (or any other product)
-        displayComments(reviewsGroupedByProduct['6'] || []);
+        // Display reviews for product_id 7 (or any other product)
+        displayComments(reviewsGroupedByProduct['7'] || []);
       } else {
         console.error('Error: No values found in response. Full response:', data);
       }
@@ -772,7 +772,7 @@
           </div>
           <div class="comment-content dz-page-text">
             <p>${review || 'No review available.'}</p>
-            <p class="star-rating">${stars}</p> <!-- Add stars here -->
+            <p class="star-rating">${stars} ${rating}</p> <!-- Add stars here -->
           </div>
         </div>
       `;
@@ -803,7 +803,7 @@
   }
  
   // This function returns a string of stars based on the rating value
- function getStars(rating) {
+function getStars(rating) {
   let stars = '';
   if (rating) {
     const numFullStars = Math.floor(rating); // Full stars
@@ -829,22 +829,8 @@
 }
 
 
-
   fetchSheetData();
 </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 </body>
 </html>
