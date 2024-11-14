@@ -717,14 +717,15 @@ Order Sehatdar’s Pure Shilajit today and discover the transformative benefits 
       const response = await fetch(url);
       const data = await response.json();
 
-      // Log data to check response structure
+      // Log the complete response to check its structure
       console.log('Fetched data:', data);
 
+      // Check if data.values is defined
       if (data.values) {
         displayData(data.values);
       } else {
         document.getElementById('sheet-data').innerHTML = '<p>No data found.</p>';
-        console.error('Error: No values found in response');
+        console.error('Error: No values found in response. Full response:', data);
       }
     } catch (error) {
       console.error('Error fetching data:', error);
@@ -751,6 +752,9 @@ Order Sehatdar’s Pure Shilajit today and discover the transformative benefits 
 
   fetchSheetData();
 </script>
+
+
+
 
 
 </body>
