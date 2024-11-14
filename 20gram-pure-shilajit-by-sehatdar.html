@@ -767,7 +767,7 @@ Order Sehatdar’s Pure Shilajit today and discover the transformative benefits 
     if (reviews && reviews.length > 0) {
       const totalRating = reviews.reduce((sum, review) => sum + parseInt(review.rating, 10), 0);
       const avgRating = totalRating / reviews.length;
-      averageRatingElement.textContent = `Avg Rating : ${avgRating.toFixed(6)}`;  // Display average rating with two decimal points
+      averageRatingElement.textContent = `Avg Rating : ${avgRating.toFixed(2)} `;  // Display average rating with two decimal points
 
       // Update the stars based on average rating
       const avgStars = getStars(avgRating);
@@ -780,15 +780,30 @@ Order Sehatdar’s Pure Shilajit today and discover the transformative benefits 
  
   // This function returns a string of stars based on the rating value
   function getStars(rating) {
-    let stars = '';
-    if (rating) {
-      const numStars = Math.round(parseFloat(rating)); // Round the rating to the nearest integer
-      for (let i = 0; i < numStars; i++) {
-        stars += '⭐'; // Use star character for each point in the rating
-      }
+  let stars = '';
+  if (rating) {
+    const numFullStars = Math.floor(rating); // Full stars
+    const isHalfStar = (rating % 1) >= 0.5; // Check if it's a half-star
+
+    // Add full stars
+    for (let i = 0; i < numFullStars; i++) {
+      stars += '⭐'; // Full star
     }
-    return stars;
+
+    // Add half star if applicable
+    if (isHalfStar) {
+      stars += '🌗'; // Half star (use a different symbol for half stars)
+    }
+
+    // Optionally, add empty stars to complete the total of 5
+    while (stars.length < 5) {
+      stars += '☆'; // Empty star
+    }
   }
+
+  return stars;
+}
+
 
   fetchSheetData();
 </script>
