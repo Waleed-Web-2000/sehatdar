@@ -516,10 +516,20 @@ Order Sehatdar’s Pure Shilajit today and discover the transformative benefits 
   .nav-link:hover {
     background-color: #e67e22;
   }
-  .star-rating {
-  font-size: 1.2em; /* Adjust this to make the stars smaller */
-  color: #f39c12; /* Gold color for stars */
+
+.star-rating {
+  font-size: 2em; /* Increase size for better visibility */
+  color: #ffcc00; /* Gold color for full stars */
 }
+
+.star-rating .half-star {
+  color: #f39c12; /* Slightly lighter color for the half star */
+}
+
+.star-rating .empty-star {
+  color: #bdc3c7; /* Light grey for empty stars */
+}
+
 
 
 </style>
@@ -784,25 +794,25 @@ Order Sehatdar’s Pure Shilajit today and discover the transformative benefits 
   }
  
   // This function returns a string of stars based on the rating value
-  function getStars(rating) {
+function getStars(rating) {
   let stars = '';
   if (rating) {
     const numFullStars = Math.floor(rating); // Full stars
     const isHalfStar = (rating % 1) >= 0.5; // Check if it's a half-star
 
-    // Add full stars
+    // Add full stars (using a glowing star emoji for a unique effect)
     for (let i = 0; i < numFullStars; i++) {
-      stars += '⭐'; // Full star
+      stars += '🌟'; // Full glowing star
     }
 
-    // Add half star if applicable
+    // Add half star (using a crescent moon emoji for a stylish half-star look)
     if (isHalfStar) {
-      stars += '🌗'; // Half star (use a different symbol for half stars)
+      stars += '🌙'; // Half star (crescent moon emoji)
     }
 
-    // Optionally, add empty stars to complete the total of 5
+    // Add empty stars (using an outlined star emoji for empty stars)
     while (stars.length < 5) {
-      stars += '☆'; // Empty star
+      stars += '✩'; // Empty outlined star
     }
   }
 
