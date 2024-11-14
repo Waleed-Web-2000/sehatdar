@@ -31,6 +31,30 @@
 	
 	<!-- MOBILE SPECIFIC -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Product",
+  "name": "Shilajit",
+  "image": "images/product/1.jpeg",
+  "description": "Pure and natural Shilajit, known for its numerous health benefits.",
+  "sku": "SHILAJIT10G",
+  "brand": { "@type": "Brand", "name": "Sehatdar" },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.58",  // Static rating
+    "reviewCount": "155"    // Static review count
+  },
+  "offers": {
+    "@type": "Offer",
+    "url": "https://sehatdar.com/10gram-pure-shilajit-by-sehatdar.html",
+    "priceCurrency": "Rupees",
+    "price": "1499",
+    "availability": "http://schema.org/InStock"
+  }
+}
+</script>
+
 	
 	<!-- STYLESHEETS -->
 	
@@ -828,91 +852,6 @@ function getStars(rating) {
   return stars;
 }
 
-
-  fetchSheetData();
-</script>
-
-<script>
-  const API_KEY = 'AIzaSyCUUUA6pfyFEIk0S3hcaqkdqb3NdXnE20g'; // Your API key
-  const SPREADSHEET_ID = '1Q35xjABOFA6q1oeDmutsSntONS1xlM059Z-MO1a6wgM'; // Your spreadsheet ID
-  const RANGE = 'Sheet1!A2:E'; // Range in Google Sheets
-
-  async function fetchSheetData() {
-    const url = `https://sheets.googleapis.com/v4/spreadsheets/${SPREADSHEET_ID}/values/${RANGE}?key=${API_KEY}`;
-    try {
-      const response = await fetch(url);
-      const data = await response.json();
-
-      if (data.values) {
-        const reviewsGroupedByProduct = groupReviewsByProduct(data.values);
-
-        // Fetch reviews for a specific product (e.g., product_id = 7)
-        const reviews = reviewsGroupedByProduct['7'] || [];
-        const reviewCount = reviews.length;
-
-        // Update review count and average rating in JSON-LD schema
-        updateJsonLdSchema(reviewCount, reviews);
-      } else {
-        console.error('Error: No values found in response.', data);
-      }
-    } catch (error) {
-      console.error('Error fetching data:', error);
-    }
-  }
-
-  function groupReviewsByProduct(reviews) {
-    return reviews.reduce((acc, row) => {
-      const [product_id, name, email, rating, review] = row;
-      if (!acc[product_id]) acc[product_id] = [];
-      acc[product_id].push({ name, email, rating: parseFloat(rating), review });
-      return acc;
-    }, {});
-  }
-
-  function updateJsonLdSchema(reviewCount, reviews) {
-    // Calculate average rating
-    const totalRating = reviews.reduce((sum, review) => sum + review.rating, 0);
-    const avgRating = reviewCount > 0 ? (totalRating / reviewCount).toFixed(2) : 0;
-
-    // Build the reviews in JSON-LD format
-    const reviewObjects = reviews.map(({ name, review, rating }, index) => ({
-      "@type": "Review",
-      "author": { "@type": "Person", "name": name },
-      "datePublished": new Date().toISOString().split('T')[0], // Use today's date
-      "reviewBody": review || "No review text",
-      "reviewRating": { "@type": "Rating", "ratingValue": rating.toString(), "bestRating": "5" }
-    }));
-
-    // JSON-LD schema for the product
-    const jsonLdSchema = {
-      "@context": "http://schema.org",
-      "@type": "Product",
-      "name": "Shilajit",
-      "image": "images/product/1.jpeg",
-      "description": "Pure and natural Shilajit, known for its numerous health benefits.",
-      "sku": "SHILAJIT10G",
-      "brand": { "@type": "Brand", "name": "Sehatdar" },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": avgRating,
-        "reviewCount": reviewCount
-      },
-      "review": reviewObjects,
-      "offers": {
-        "@type": "Offer",
-        "url": "https://sehatdar.com/10gram-pure-shilajit-by-sehatdar.html",
-        "priceCurrency": "Rupees",
-        "price": "1499",
-        "availability": "http://schema.org/InStock"
-      }
-    };
-
-    // Inject the JSON-LD schema into the HTML
-    const scriptElement = document.createElement('script');
-    scriptElement.type = 'application/ld+json';
-    scriptElement.textContent = JSON.stringify(jsonLdSchema, null, 2);
-    document.head.appendChild(scriptElement);
-  }
 
   fetchSheetData();
 </script>
