@@ -426,10 +426,10 @@
   function updateAverageRating(reviews) {
     const totalRating = reviews.reduce((sum, row) => {
       const rating = parseFloat(row[4]); // Assuming the rating is in the 5th column (E)
-      return sum + (isNaN(rating) ? 0 : rating);
+      return sum + (isNaN(rating) || rating === 0 ? 0 : rating); // Handle invalid ratings
     }, 0);
 
-    const avgRating = (totalRating / reviews.length).toFixed(1); // Calculate average rating and round to 1 decimal place
+    const avgRating = (totalRating / reviews.length).toFixed(1); // Calculate average rating
     const averageRatingElement = document.getElementById('average-rating');
     const starRatingElement = document.getElementById('star-rating');
 
@@ -464,6 +464,7 @@
 
   fetchSheetData();
 </script>
+
 
 
 </body>
