@@ -48,86 +48,153 @@
 
     <!-- JSON-LD Schema for Sehatdar Pure Shilajit Product -->
     <script type="application/ld+json">
-    {
-        "@context": "http://schema.org",
-        "@type": "Product",
-        "name": "Sehatdar Pure Shilajit",
-        "image": "images/product/1.jpeg",
-        "description": "100% authentic Shilajit, lab-tested, available in 10g, 20g, and 30g sizes. Known for boosting energy, vitality, and overall wellness.",
-        "sku": "PRO-S-10",
-        "brand": {
-            "@type": "Brand",
-            "name": "Sehatdar"
-        },
-        "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "4.16",
-            "reviewCount": "535"
-        },
-        "offers": [
-            {
-                "@type": "Offer",
-                "url": "https://sehatdar.com/10gram-pure-shilajit-by-sehatdar.html",
-                "priceCurrency": "PKR",
-                "price": "1499",
-                "sku": "PRO-S-10",
-                "availability": "http://schema.org/InStock",
-                "priceValidUntil": "2025-12-31"
+{
+    "@context": "http://schema.org",
+    "@type": "Product",
+    "name": "Sehatdar Pure Shilajit",
+    "image": "images/product/1.jpeg",
+    "description": "100% authentic Shilajit, lab-tested, available in 10g, 20g, and 30g sizes. Known for boosting energy, vitality, and overall wellness.",
+    "sku": "PRO-S-10",
+    "brand": {
+        "@type": "Brand",
+        "name": "Sehatdar"
+    },
+    "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.16",
+        "reviewCount": "535"
+    },
+    "offers": [
+        {
+            "@type": "Offer",
+            "url": "https://sehatdar.com/10gram-pure-shilajit-by-sehatdar.html",
+            "priceCurrency": "PKR",
+            "price": "1499",
+            "sku": "PRO-S-10",
+            "availability": "http://schema.org/InStock",
+            "priceValidUntil": "2025-12-31",
+            "hasMerchantReturnPolicy": {
+                "@type": "MerchantReturnPolicy",
+                "name": "15-Day Return Policy",
+                "merchantReturnDays": 15,
+                "returnFees": "Free"
             },
-            {
-                "@type": "Offer",
-                "url": "https://sehatdar.com/20gram-pure-shilajit-by-sehatdar.html",
-                "priceCurrency": "PKR",
-                "price": "1999",
-                "sku": "PRO-S-20",
-                "availability": "http://schema.org/InStock",
-                "priceValidUntil": "2025-12-31"
-            },
-            {
-                "@type": "Offer",
-                "url": "https://sehatdar.com/30gram-pure-shilajit-by-sehatdar.html",
-                "priceCurrency": "PKR",
-                "price": "3899",
-                "sku": "PRO-S-30",
-                "availability": "http://schema.org/InStock",
-                "priceValidUntil": "2025-12-31"
-            }
-        ],
-        "hasMerchantReturnPolicy": {
-            "@type": "MerchantReturnPolicy",
-            "name": "15-Day Return Policy",
-            "merchantReturnDays": 15,
-            "returnFees": "Free"
-        },
-        "shippingDetails": {
-            "@type": "OfferShippingDetails",
-            "shippingDestination": {
-                "@type": "DefinedRegion",
-                "addressCountry": "PK"
-            },
-            "deliveryTime": {
-                "@type": "ShippingDeliveryTime",
-                "handlingTime": {
-                    "@type": "QuantitativeValue",
-                    "minValue": 1,
-                    "maxValue": 2,
-                    "unitCode": "Day"
+            "shippingDetails": {
+                "@type": "OfferShippingDetails",
+                "shippingDestination": {
+                    "@type": "DefinedRegion",
+                    "addressCountry": "PK"
                 },
-                "transitTime": {
-                    "@type": "QuantitativeValue",
-                    "minValue": 3,
-                    "maxValue": 5,
-                    "unitCode": "Day"
+                "deliveryTime": {
+                    "@type": "ShippingDeliveryTime",
+                    "handlingTime": {
+                        "@type": "QuantitativeValue",
+                        "minValue": 1,
+                        "maxValue": 2,
+                        "unitCode": "Day"
+                    },
+                    "transitTime": {
+                        "@type": "QuantitativeValue",
+                        "minValue": 3,
+                        "maxValue": 5,
+                        "unitCode": "Day"
+                    }
+                },
+                "shippingRate": {
+                    "@type": "MonetaryAmount",
+                    "value": "0",
+                    "currency": "PKR"
                 }
+            }
+        },
+        {
+            "@type": "Offer",
+            "url": "https://sehatdar.com/20gram-pure-shilajit-by-sehatdar.html",
+            "priceCurrency": "PKR",
+            "price": "1999",
+            "sku": "PRO-S-20",
+            "availability": "http://schema.org/InStock",
+            "priceValidUntil": "2025-12-31",
+            "hasMerchantReturnPolicy": {
+                "@type": "MerchantReturnPolicy",
+                "name": "15-Day Return Policy",
+                "merchantReturnDays": 15,
+                "returnFees": "Free"
             },
-            "shippingRate": {
-                "@type": "MonetaryAmount",
-                "value": "0",
-                "currency": "PKR"
+            "shippingDetails": {
+                "@type": "OfferShippingDetails",
+                "shippingDestination": {
+                    "@type": "DefinedRegion",
+                    "addressCountry": "PK"
+                },
+                "deliveryTime": {
+                    "@type": "ShippingDeliveryTime",
+                    "handlingTime": {
+                        "@type": "QuantitativeValue",
+                        "minValue": 1,
+                        "maxValue": 2,
+                        "unitCode": "Day"
+                    },
+                    "transitTime": {
+                        "@type": "QuantitativeValue",
+                        "minValue": 3,
+                        "maxValue": 5,
+                        "unitCode": "Day"
+                    }
+                },
+                "shippingRate": {
+                    "@type": "MonetaryAmount",
+                    "value": "0",
+                    "currency": "PKR"
+                }
+            }
+        },
+        {
+            "@type": "Offer",
+            "url": "https://sehatdar.com/30gram-pure-shilajit-by-sehatdar.html",
+            "priceCurrency": "PKR",
+            "price": "3899",
+            "sku": "PRO-S-30",
+            "availability": "http://schema.org/InStock",
+            "priceValidUntil": "2025-12-31",
+            "hasMerchantReturnPolicy": {
+                "@type": "MerchantReturnPolicy",
+                "name": "15-Day Return Policy",
+                "merchantReturnDays": 15,
+                "returnFees": "Free"
+            },
+            "shippingDetails": {
+                "@type": "OfferShippingDetails",
+                "shippingDestination": {
+                    "@type": "DefinedRegion",
+                    "addressCountry": "PK"
+                },
+                "deliveryTime": {
+                    "@type": "ShippingDeliveryTime",
+                    "handlingTime": {
+                        "@type": "QuantitativeValue",
+                        "minValue": 1,
+                        "maxValue": 2,
+                        "unitCode": "Day"
+                    },
+                    "transitTime": {
+                        "@type": "QuantitativeValue",
+                        "minValue": 3,
+                        "maxValue": 5,
+                        "unitCode": "Day"
+                    }
+                },
+                "shippingRate": {
+                    "@type": "MonetaryAmount",
+                    "value": "0",
+                    "currency": "PKR"
+                }
             }
         }
-    }
-    </script>
+    ]
+}
+</script>
+
 	
 	<!-- STYLESHEETS -->
 	
