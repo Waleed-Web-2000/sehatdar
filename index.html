@@ -196,26 +196,32 @@
 </script>
 
 	
-	<!-- STYLESHEETS -->
-	
-	<link rel="stylesheet" type="text/css" href="icons/iconly/index.min.css">
-	<link rel="stylesheet" type="text/css" href="vendor/magnific-popup/magnific-popup.min.css">	
-	<link rel="stylesheet" type="text/css" href="vendor/bootstrap-select/dist/css/bootstrap-select.min.css">
-	<link rel="stylesheet" type="text/css" href="vendor/swiper/swiper-bundle.min.css">
-	<link rel="stylesheet" type="text/css" href="vendor/nouislider/nouislider.min.css">
-	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
-	<link rel="stylesheet" type="text/css" href="vendor/lightgallery/dist/css/lightgallery.css" >
-    <link rel="stylesheet" type="text/css" href="vendor/lightgallery/dist/css/lg-thumbnail.css">
-    <link rel="stylesheet" type="text/css" href="vendor/lightgallery/dist/css/lg-zoom.css">
-	
-	<!-- Custom Stylesheet -->
-	<link class="main-css" rel="stylesheet" type="text/css" href="css/style.css">
-	<link class="skin" type="text/css" rel="stylesheet" href="css/skin/skin-1.css">
-	
-	<!-- GOOGLE FONTS-->
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+	<!-- Preload Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="preload" as="style">
+
+<!-- STYLESHEETS -->
+<!-- Preload the critical CSS files that are essential for initial rendering -->
+<link rel="preload" href="icons/iconly/index.min.css" as="style">
+<link rel="preload" href="vendor/bootstrap-select/dist/css/bootstrap-select.min.css" as="style">
+<link rel="preload" href="vendor/animate/animate.css" as="style">
+<link rel="preload" href="css/style.css" as="style">
+
+<!-- Load non-critical CSS files asynchronously using media="print" -->
+<link rel="stylesheet" type="text/css" href="vendor/magnific-popup/magnific-popup.min.css" media="print" onload="this.media='all'">
+<link rel="stylesheet" type="text/css" href="vendor/swiper/swiper-bundle.min.css" media="print" onload="this.media='all'">
+<link rel="stylesheet" type="text/css" href="vendor/nouislider/nouislider.min.css" media="print" onload="this.media='all'">
+<link rel="stylesheet" type="text/css" href="vendor/lightgallery/dist/css/lightgallery.css" media="print" onload="this.media='all'">
+<link rel="stylesheet" type="text/css" href="vendor/lightgallery/dist/css/lg-thumbnail.css" media="print" onload="this.media='all'">
+<link rel="stylesheet" type="text/css" href="vendor/lightgallery/dist/css/lg-zoom.css" media="print" onload="this.media='all'">
+
+<!-- Custom Stylesheet -->
+<link class="main-css" rel="stylesheet" type="text/css" href="css/style.css">
+
+<!-- Additional theme skin stylesheet (loaded after the main styles) -->
+<link class="skin" type="text/css" rel="stylesheet" href="css/skin/skin-1.css">
+
 </head>	
 <body id="bg">
 
@@ -398,7 +404,7 @@
 						<div class="col-md-12 col-lg-4">
 							<div class="banner-media">
 								<div class="img-preview wow slideInRight" data-wow-delay="0.1s" data-wow-duration="1.5s">
-									<img src="images/product/2.jpeg" alt="banner-media">
+									<link rel="preload" href="images/product/2.jpeg" as="image">
 								</div>
 								<a class="icon-button popup-youtube" href="https://www.youtube.com/watch?v=WYK9txuBUWg">
 									<div class="text-row word-rotate-box c-black blur">
