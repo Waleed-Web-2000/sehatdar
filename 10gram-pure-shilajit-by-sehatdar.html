@@ -957,34 +957,61 @@ async function updateReviews() {
         const data = await response.json();
 
         if (data.values) {
+            // Map reviews for frontend display
             const reviews = data.values.map(([productId, name, email, rating, review]) => ({
-                "@type": "Review",
-                "author": name,
-                "reviewBody": review,
-                "reviewRating": {
-                    "@type": "Rating",
-                    "ratingValue": parseFloat(rating)
-                }
+                name: name,
+                rating: parseFloat(rating),
+                review: review
             }));
 
-            const schemaScript = document.querySelector('#product-schema');
-            const schema = JSON.parse(schemaScript.textContent);
+            // Calculate average rating
+            const avgRating =
+                reviews.reduce((sum, r) => sum + r.rating, 0) / reviews.length;
 
-            schema.aggregateRating.ratingValue = (
-                reviews.reduce((sum, r) => sum + r.reviewRating.ratingValue, 0) / reviews.length
-            ).toFixed(1); // Calculate average rating dynamically
-            schema.aggregateRating.reviewCount = reviews.length;
-            schema.review = reviews;
+            // Update frontend
+            document.getElementById("average-rating").textContent =
+                `Average Rating: ${avgRating.toFixed(1)} (${reviews.length} reviews)`;
 
-            schemaScript.textContent = JSON.stringify(schema);
+            const reviewsList = document.getElementById("reviews-list");
+            reviewsList.innerHTML = ""; // Clear any existing content
+
+            reviews.forEach((r) => {
+                const li = document.createElement("li");
+                li.textContent = `${r.name} (${r.rating}/5): ${r.review}`;
+                reviewsList.appendChild(li);
+            });
+
+            // Update JSON-LD schema
+            updateSchema(reviews, avgRating);
         }
     } catch (error) {
-        console.error('Error updating reviews:', error);
+        console.error("Error updating reviews:", error);
     }
+}
+
+function updateSchema(reviews, avgRating) {
+    const schemaScript = document.querySelector('#product-schema');
+    const schema = JSON.parse(schemaScript.textContent);
+
+    schema.aggregateRating.ratingValue = avgRating.toFixed(1);
+    schema.aggregateRating.reviewCount = reviews.length;
+    schema.review = reviews.map((r) => ({
+        "@type": "Review",
+        "author": r.name,
+        "reviewBody": r.review,
+        "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": r.rating
+        }
+    }));
+
+    schemaScript.textContent = JSON.stringify(schema);
 }
 
 updateReviews();
 </script>
+
+
 
 </body>
 </html>
