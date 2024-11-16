@@ -31,7 +31,7 @@
 	
 	<!-- MOBILE SPECIFIC -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<script type="application/ld+json" id="product-schema">
+	<script type="application/ld+json">
 {
   "@context": "http://schema.org",
   "@type": "Product",
@@ -45,10 +45,9 @@
   },
   "aggregateRating": {
     "@type": "AggregateRating",
-    "ratingValue": "", 
-    "reviewCount": ""
+    "ratingValue": "4.50",
+    "reviewCount": "202"
   },
-  "review": [],
   "offers": [
     {
       "@type": "Offer",
@@ -97,7 +96,6 @@
   }
 }
 </script>
-
 
 
 
@@ -943,75 +941,6 @@ function getStars(rating) {
 
   fetchSheetData();
 </script>
-
-<script>
-async function updateReviews() {
-    const API_KEY = 'AIzaSyCUUUA6pfyFEIk0S3hcaqkdqb3NdXnE20g';
-    const SPREADSHEET_ID = '1Q35xjABOFA6q1oeDmutsSntONS1xlM059Z-MO1a6wgM';
-    const RANGE = 'Sheet1!A2:E';
-
-    const url = `https://sheets.googleapis.com/v4/spreadsheets/${SPREADSHEET_ID}/values/${RANGE}?key=${API_KEY}`;
-
-    try {
-        const response = await fetch(url);
-        const data = await response.json();
-
-        if (data.values) {
-            // Map reviews for frontend display
-            const reviews = data.values.map(([productId, name, email, rating, review]) => ({
-                name: name,
-                rating: parseFloat(rating),
-                review: review
-            }));
-
-            // Calculate average rating
-            const avgRating =
-                reviews.reduce((sum, r) => sum + r.rating, 0) / reviews.length;
-
-            // Update frontend
-            document.getElementById("average-rating").textContent =
-                `Average Rating: ${avgRating.toFixed(1)} (${reviews.length} reviews)`;
-
-            const reviewsList = document.getElementById("reviews-list");
-            reviewsList.innerHTML = ""; // Clear any existing content
-
-            reviews.forEach((r) => {
-                const li = document.createElement("li");
-                li.textContent = `${r.name} (${r.rating}/5): ${r.review}`;
-                reviewsList.appendChild(li);
-            });
-
-            // Update JSON-LD schema
-            updateSchema(reviews, avgRating);
-        }
-    } catch (error) {
-        console.error("Error updating reviews:", error);
-    }
-}
-
-function updateSchema(reviews, avgRating) {
-    const schemaScript = document.querySelector('#product-schema');
-    const schema = JSON.parse(schemaScript.textContent);
-
-    schema.aggregateRating.ratingValue = avgRating.toFixed(1);
-    schema.aggregateRating.reviewCount = reviews.length;
-    schema.review = reviews.map((r) => ({
-        "@type": "Review",
-        "author": r.name,
-        "reviewBody": r.review,
-        "reviewRating": {
-            "@type": "Rating",
-            "ratingValue": r.rating
-        }
-    }));
-
-    schemaScript.textContent = JSON.stringify(schema);
-}
-
-updateReviews();
-</script>
-
-
 
 </body>
 </html>
