@@ -31,90 +31,71 @@
 	
 	<!-- MOBILE SPECIFIC -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<script>
-  const reviews = [
-    { name: "Ali Khan", review: "Excellent quality Shilajit!", rating: "5" },
-    { name: "Sara Ahmed", review: "Good product, fast delivery.", rating: "4" },
-  ];
-
-  const schema = {
-    "@context": "http://schema.org",
-    "@type": "Product",
-    "name": "10gram Pure Shilajit By Sehatdar",
-    "image": "https://sehatdar.com/images/product/1.jpeg",
-    "description": "Order pure Shilajit online from Sehatdar and experience its powerful benefits for energy, vitality, and overall wellness. 100% authentic and lab-tested Shilajit available for convenient online purchase.",
-    "sku": "PRO-S-10",
-    "brand": {
-      "@type": "Brand",
-      "name": "Sehatdar"
+	<script type="application/ld+json" id="product-schema">
+{
+  "@context": "http://schema.org",
+  "@type": "Product",
+  "name": "10gram Pure Shilajit By Sehatdar",
+  "image": "https://sehatdar.com/images/product/1.jpeg",
+  "description": "Order pure Shilajit online from Sehatdar and experience its powerful benefits for energy, vitality, and overall wellness. 100% authentic and lab-tested Shilajit available for convenient online purchase.",
+  "sku": "PRO-S-10",
+  "brand": {
+    "@type": "Brand",
+    "name": "Sehatdar"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "", 
+    "reviewCount": ""
+  },
+  "review": [],
+  "offers": [
+    {
+      "@type": "Offer",
+      "url": "https://sehatdar.com/10gram-pure-shilajit-by-sehatdar.html",
+      "priceCurrency": "PKR",
+      "price": "1499",
+      "availability": "http://schema.org/InStock",
+      "priceValidUntil": "2025-12-31"
+    }
+  ],
+  "hasMerchantReturnPolicy": {
+    "@type": "MerchantReturnPolicy",
+    "name": "15-Day Return Policy",
+    "merchantReturnDays": 15,
+    "returnFees": "Free",
+    "returnPolicyCategory": "FreeReturn",
+    "url": "https://sehatdar.com/return-policy",
+    "returnPolicyAdditionalInfo": "Products must be returned in original condition and packaging."
+  },
+  "shippingDetails": {
+    "@type": "OfferShippingDetails",
+    "shippingDestination": {
+      "@type": "DefinedRegion",
+      "addressCountry": "PK"
     },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.50",
-      "reviewCount": reviews.length.toString(),
+    "deliveryTime": {
+      "@type": "ShippingDeliveryTime",
+      "handlingTime": {
+        "@type": "QuantitativeValue",
+        "minValue": 1,
+        "maxValue": 2,
+        "unitCode": "Day"
+      },
+      "transitTime": {
+        "@type": "QuantitativeValue",
+        "minValue": 3,
+        "maxValue": 5,
+        "unitCode": "Day"
+      }
     },
-    "offers": [
-      {
-        "@type": "Offer",
-        "url": "https://sehatdar.com/10gram-pure-shilajit-by-sehatdar.html",
-        "priceCurrency": "PKR",
-        "price": "1499",
-        "availability": "http://schema.org/InStock",
-        "priceValidUntil": "2025-12-31",
-      },
-    ],
-    "hasMerchantReturnPolicy": {
-      "@type": "MerchantReturnPolicy",
-      "name": "15-Day Return Policy",
-      "merchantReturnDays": 15,
-      "returnFees": "Free",
-      "returnPolicyCategory": "FreeReturn",
-      "url": "https://sehatdar.com/return-policy",
-      "returnPolicyAdditionalInfo": "Products must be returned in original condition and packaging.",
-    },
-    "shippingDetails": {
-      "@type": "OfferShippingDetails",
-      "shippingDestination": {
-        "@type": "DefinedRegion",
-        "addressCountry": "PK",
-      },
-      "deliveryTime": {
-        "@type": "ShippingDeliveryTime",
-        "handlingTime": {
-          "@type": "QuantitativeValue",
-          "minValue": 1,
-          "maxValue": 2,
-          "unitCode": "Day",
-        },
-        "transitTime": {
-          "@type": "QuantitativeValue",
-          "minValue": 3,
-          "maxValue": 5,
-          "unitCode": "Day",
-        },
-      },
-      "shippingRate": {
-        "@type": "MonetaryAmount",
-        "value": "0",
-        "currency": "PKR",
-      },
-    },
-    "review": reviews.map((r) => ({
-      "@type": "Review",
-      "author": r.name,
-      "reviewBody": r.review || "No review available.",
-      "reviewRating": {
-        "@type": "Rating",
-        "ratingValue": r.rating || "0",
-      },
-    })),
-  };
-
-  // Inject JSON-LD into the page
-  const scriptTag = document.createElement("script");
-  scriptTag.type = "application/ld+json";
-  scriptTag.textContent = JSON.stringify(schema, null, 2);
-  document.head.appendChild(scriptTag);
+    "shippingRate": {
+      "@type": "MonetaryAmount",
+      "value": "0",
+      "currency": "PKR"
+    }
+  }
+}
 </script>
 
 
@@ -961,6 +942,48 @@ function getStars(rating) {
 
 
   fetchSheetData();
+</script>
+
+<script>
+async function updateReviews() {
+    const API_KEY = 'AIzaSyCUUUA6pfyFEIk0S3hcaqkdqb3NdXnE20g';
+    const SPREADSHEET_ID = '1Q35xjABOFA6q1oeDmutsSntONS1xlM059Z-MO1a6wgM';
+    const RANGE = 'Sheet1!A2:E';
+
+    const url = `https://sheets.googleapis.com/v4/spreadsheets/${SPREADSHEET_ID}/values/${RANGE}?key=${API_KEY}`;
+
+    try {
+        const response = await fetch(url);
+        const data = await response.json();
+
+        if (data.values) {
+            const reviews = data.values.map(([productId, name, email, rating, review]) => ({
+                "@type": "Review",
+                "author": name,
+                "reviewBody": review,
+                "reviewRating": {
+                    "@type": "Rating",
+                    "ratingValue": parseFloat(rating)
+                }
+            }));
+
+            const schemaScript = document.querySelector('#product-schema');
+            const schema = JSON.parse(schemaScript.textContent);
+
+            schema.aggregateRating.ratingValue = (
+                reviews.reduce((sum, r) => sum + r.reviewRating.ratingValue, 0) / reviews.length
+            ).toFixed(1); // Calculate average rating dynamically
+            schema.aggregateRating.reviewCount = reviews.length;
+            schema.review = reviews;
+
+            schemaScript.textContent = JSON.stringify(schema);
+        }
+    } catch (error) {
+        console.error('Error updating reviews:', error);
+    }
+}
+
+updateReviews();
 </script>
 
 </body>
