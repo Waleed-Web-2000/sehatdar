@@ -426,7 +426,7 @@
 
   <div class="mb-3 w-100 input-with-icon">
     <label for="qty" class="form-label">Quantity</label>
-    <input type="number" class="form-control bg-light" id="qty" name="qty" min="1" max="5" placeholder="Type Quantity" required>
+    <input type="number" class="form-control bg-light" id="qty" name="qty" min="1" value="1" max="5" placeholder="Type Quantity" required>
   </div>
 
   <button type="submit" class="btn btn-secondary w-100 pulse">Place Order</button>
@@ -805,7 +805,7 @@
 
 <script>
   const url = 'https://script.google.com/macros/s/AKfycbzJ_LtXfe_CvJXhGB7nWWVorr8r78IRN_SDlbFZaXUo6LBlmk4MkSHSie_D8qfC1BqC/exec';
-  
+
   const form = document.querySelector('#checkoutForm');
 
   form.addEventListener("submit", async (e) => {
