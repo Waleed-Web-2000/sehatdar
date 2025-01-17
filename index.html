@@ -436,10 +436,14 @@ src="https://www.facebook.com/tr?id=1985350531946832&ev=PageView&noscript=1"
                 <div class="col-md-12 col-lg-4">
                     <div class="banner-media">
                         <div class="img-preview wow slideInRight" data-wow-delay="0.1s" data-wow-duration="1.5s">
-                            <picture>
-                                <source srcset="images/product/2.webp" type="image/webp">
-                                <img class="lazyload" data-src="images/product/2.jpeg" alt="Shilajit Banner">
-                            </picture>
+                           <picture>
+  <source srcset="images/product/2.webp" type="image/webp">
+  <img class="lazyload" 
+       data-src="images/product/2.jpeg" 
+       src="images/placeholder.png" 
+       alt="Shilajit Banner" 
+       loading="eager"> <!-- Use 'eager' to load immediately -->
+</picture>
                         </div>
                         <a class="icon-button popup-youtube" href="https://www.youtube.com/watch?v=WYK9txuBUWg">
                             <div class="text-row word-rotate-box c-black blur">
